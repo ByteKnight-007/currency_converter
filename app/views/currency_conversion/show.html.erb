@@ -1,16 +1,15 @@
-<%= form_tag(convert_currency_path, method: 'post') do %>
+<%= form_tag(currency_conversion_path, method: 'post') do %>
   <%= label_tag 'Base Currency' %>
-  <%= select_tag 'from_currency', options_for_select(CurrencyConstants::AVAILABLE_CURRENCIES), class: 'select2' %>
+  <%= select_tag 'from_currency', options_for_select(CurrencyConstants::AVAILABLE_CURRENCIES) %>
 
   <%= label_tag 'Target Currency' %>
-  <%= select_tag 'to_currency', options_for_select(CurrencyConstants::AVAILABLE_CURRENCIES), class: 'select2' %>
+  <%= select_tag 'to_currency', options_for_select(CurrencyConstants::AVAILABLE_CURRENCIES) %>
 
   <%= label_tag 'Amount' %>
-  <%= text_field_tag 'amount', class: 'amount-field' %>
+  <%= text_field_tag 'amount' %>
 
   <%= submit_tag 'Convert' %>
 <% end %>
-
 
 <% if @converted_amount.present? %>
   <div style="margin: 20px auto; padding: 15px; background-color: #f8d7da; border: 1px solid #f5c6cb; border-radius: 5px; text-align: center;">

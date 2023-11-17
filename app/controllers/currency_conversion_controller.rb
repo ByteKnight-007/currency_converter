@@ -1,7 +1,4 @@
-class CurrencyConversionController < ApplicationController
-    def index
-    end
-  
+class CurrencyConversionController < ApplicationController  
     def show
       @from_currency = params[:from_currency]
       @to_currency = params[:to_currency]
@@ -12,6 +9,7 @@ class CurrencyConversionController < ApplicationController
         if @exchange_rate.present? &&  @exchange_rate['success']==true
           if request.format.html?
             @amount = params[:amount].to_f
+
             @converted_amount = @amount * @exchange_rate['quotes'].values.first
           else
             render json: @converted_amount

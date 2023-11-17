@@ -9,7 +9,7 @@ class UserController < ApplicationController
       # Successfully signed up
       session[:user_id] = @user.id
       session[:first_name] = @user.first_name
-      redirect_to static_page_home_path, notice: 'Successfully signed in!'
+      redirect_to currency_conversion_path, notice: 'Successfully signed in!'
     else
       render 'new'
     end
@@ -18,6 +18,6 @@ class UserController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :email, :password, :password_confirmation)
   end
 end
