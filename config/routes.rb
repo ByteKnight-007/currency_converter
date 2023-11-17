@@ -3,4 +3,18 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+  get 'static_page/home'
+
+  get '/signup', to: 'user#new'
+  post '/signup', to: 'user#create'
+
+  get '/signin', to: 'session#new'
+  post '/signin', to: 'session#create'
+  
+  get '/signout', to: 'session#destroy'
+
+  get '/login', to: 'session#new'
+
+  # Defines the root path route ("/")
+  root 'static_page#home'
 end
