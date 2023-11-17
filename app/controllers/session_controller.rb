@@ -4,8 +4,7 @@ class SessionController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    puts user
-    puts session
+
     if user && user.authenticate(params[:session][:password])
       # Successfully signed in
       session[:user_id] = user.id
