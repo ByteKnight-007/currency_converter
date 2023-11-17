@@ -129,6 +129,8 @@
         <%= form.label :password_confirmation %>
         <%= form.password_field :password_confirmation, class: 'form-control', required: true %>
       </div>
+      <%= recaptcha_tags %>
+
       <%= form.submit 'Sign up', class: 'btn btn-primary' %>
     <% end %>
   </div>

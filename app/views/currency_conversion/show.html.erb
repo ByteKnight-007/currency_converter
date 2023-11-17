@@ -1,0 +1,23 @@
+<%= form_tag(convert_currency_path, method: 'post') do %>
+  <%= label_tag 'Base Currency' %>
+  <%= select_tag 'from_currency', options_for_select(CurrencyConstants::AVAILABLE_CURRENCIES), class: 'select2' %>
+
+  <%= label_tag 'Target Currency' %>
+  <%= select_tag 'to_currency', options_for_select(CurrencyConstants::AVAILABLE_CURRENCIES), class: 'select2' %>
+
+  <%= label_tag 'Amount' %>
+  <%= text_field_tag 'amount', class: 'amount-field' %>
+
+  <%= submit_tag 'Convert' %>
+<% end %>
+
+
+<% if @converted_amount.present? %>
+  <div style="margin: 20px auto; padding: 15px; background-color: #f8d7da; border: 1px solid #f5c6cb; border-radius: 5px; text-align: center;">
+    <h1 style="font-size: 20px; color: #1c3b72;">Conversion Results:</h1>
+    <p style="font-size: 18px; color: #721c24;">
+      <%= number_to_currency(@amount, unit: @from_currency, format: "%n %u", precision: 2) %> is equal to
+      <%= number_to_currency(@converted_amount, unit: @to_currency, format: "%n %u", precision: 2) %>.
+    </p>
+  </div>
+<% end %>

@@ -6,7 +6,7 @@
     <title>Sign In</title>
     <style>
       body {
-        background-image: url('https://wallpapers.com/images/hd/cloudy-weather-digital-illustration-hi16vkc00cp99uzv.jpg');
+        background-image: url('https://wallpapercave.com/wp/wp2300388.jpg');
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -45,7 +45,7 @@
       }
 
       .form-control {
-          width: 100%;
+          width: 93%;
           padding: 10px;
           border: 1px solid #ccc;
           border-radius: 4px;
@@ -96,6 +96,7 @@
                     <%= label_tag 'Password' %>
                     <%= password_field_tag 'session[password]', nil, class: 'form-control', required: true %>
                 </div>
+                 <%= recaptcha_tags %>
                 <%= submit_tag 'Sign in', class: 'btn btn-primary' %>
             <% end %>
         </div>

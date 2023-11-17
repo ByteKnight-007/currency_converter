@@ -10,7 +10,7 @@ class SessionController < ApplicationController
         # Successfully signed in
         session[:user_id] = user.id
         session[:first_name] = user.first_name
-        redirect_to static_page_home_path, notice: 'Successfully signed in!'
+        redirect_to currency_conversion_path, notice: 'Successfully signed in!'
       else
         # Invalid email or password
         flash.now[:alert] = 'Invalid email or password'
