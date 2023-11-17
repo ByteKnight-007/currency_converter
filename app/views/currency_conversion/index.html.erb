@@ -1,3 +1,16 @@
+<!-- app/views/currency_conversion/index.html.erb -->
+
+  <div class="greeting">
+    <% current_time = Time.now %>
+    <% if current_time.hour < 12 %>
+      Good Morning, <%= session[:first_name] %> !
+    <% elsif current_time.hour < 18 %>
+      Good Afternoon, <%= session[:first_name] %> !
+    <% else %>
+      Good Evening, <%= session[:first_name] %> !
+    <% end %>
+  </div>
+
 <%= form_tag(convert_currency_path, method: 'post') do %>
   <%= label_tag 'Base Currency' %>
   <%= select_tag 'from_currency', options_for_select(CurrencyConstants::AVAILABLE_CURRENCIES) %>
@@ -10,3 +23,5 @@
 
   <%= submit_tag 'Convert' %>
 <% end %>
+
+<%= link_to 'Log Out', signout_path, method: :delete, class: 'btn' %>

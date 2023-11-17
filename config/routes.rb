@@ -15,8 +15,9 @@ Rails.application.routes.draw do
 
   get '/login', to: 'session#new'
 
-  post '/currency_conversion', to: 'currency_conversion#show'
-  get '/currency_conversion', to: 'currency_conversion#show'
+  # post '/currency_conversion', to: 'currency_conversion#show'
+  get '/currency_conversion', to: 'currency_conversion#index'
+  post '/currency_conversions', to: 'currency_conversion#show', as: 'convert_currency'
 
   # Defines the root path route ("/")
   root 'static_page#home'

@@ -1,15 +1,30 @@
-<%= form_tag(currency_conversion_path, method: 'post') do %>
+<!-- app/views/currency_conversion/convert.html.erb -->
+
+  <div class="greeting">
+    <% current_time = Time.now %>
+    <% if current_time.hour < 12 %>
+      Good Morning, <%= session[:first_name] %> !
+    <% elsif current_time.hour < 18 %>
+      Good Afternoon, <%= session[:first_name] %> !
+    <% else %>
+      Good Evening, <%= session[:first_name] %> !
+    <% end %>
+  </div>
+
+
+<%= form_tag(convert_currency_path, method: 'post') do %>
   <%= label_tag 'Base Currency' %>
-  <%= select_tag 'from_currency', options_for_select(CurrencyConstants::AVAILABLE_CURRENCIES) %>
+  <%= select_tag 'from_currency', options_for_select(CurrencyConstants::AVAILABLE_CURRENCIES, 'USD') %>
 
   <%= label_tag 'Target Currency' %>
-  <%= select_tag 'to_currency', options_for_select(CurrencyConstants::AVAILABLE_CURRENCIES) %>
+  <%= select_tag 'to_currency', options_for_select(CurrencyConstants::AVAILABLE_CURRENCIES, 'INR') %>
 
   <%= label_tag 'Amount' %>
   <%= text_field_tag 'amount' %>
 
   <%= submit_tag 'Convert' %>
 <% end %>
+
 
 <% if @converted_amount.present? %>
   <div style="margin: 20px auto; padding: 15px; background-color: #f8d7da; border: 1px solid #f5c6cb; border-radius: 5px; text-align: center;">
@@ -20,3 +35,5 @@
     </p>
   </div>
 <% end %>
+
+<%= link_to 'Log Out', signout_path, method: :delete, class: 'btn' %>
